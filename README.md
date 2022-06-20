@@ -1,0 +1,1 @@
+Homework to create a training site for the course "Web-разработчик на Python" by OTUS
