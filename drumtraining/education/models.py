@@ -3,11 +3,15 @@ from django.db import models
 
 
 class Instructor(models.Model):
-    instructor = models.OneToOneField(get_user_model(),
-                                      on_delete=models.CASCADE,
-                                      primary_key=True)
-    work = models.CharField(max_length=100,
-                            blank=True)
+    instructor = models.OneToOneField(
+        get_user_model(),
+        on_delete=models.CASCADE,
+        primary_key=True
+    )
+    work = models.CharField(
+        max_length=100,
+        blank=True
+    )
     bio = models.TextField(blank=True)
     student = models.ManyToManyField('Student')
     course = models.ManyToManyField('Course')
@@ -40,20 +44,26 @@ class Student(models.Model):
         (FEMALE, "female")
     ]
 
-    student = models.OneToOneField(get_user_model(),
-                                   on_delete=models.CASCADE,
-                                   primary_key=True)
+    student = models.OneToOneField(
+        get_user_model(),
+        on_delete=models.CASCADE,
+        primary_key=True
+    )
     birthday = models.DateField()
-    gender = models.CharField(max_length=1,
-                              choices=GENDER_CHOICES)
-    level = models.CharField(max_length=3,
-                             choices=LEVEL_CHOICES,
-                             default=LEVEL_DEL)
+    gender = models.CharField(
+        max_length=1,
+        choices=GENDER_CHOICES
+    )
+    level = models.CharField(
+        max_length=3,
+        choices=LEVEL_CHOICES,
+        default=LEVEL_DEL
+    )
     bio = models.TextField(blank=True)
     course = models.ManyToManyField('Course')
 
     def __str__(self):
-        return f"Author <{self.student}>"
+        return f"Student <{self.student}>"
 
     class Meta:
         verbose_name = "студент"
@@ -61,15 +71,20 @@ class Student(models.Model):
 
 
 class Course(models.Model):
-    name = models.CharField(max_length=70,
-                            blank=False,
-                            primary_key=True)
+    name = models.CharField(
+        max_length=70,
+        blank=False,
+        primary_key=True
+    )
     started_at = models.DateField()
-    duration = models.CharField(max_length=30,
-                                blank=True)
+    duration = models.CharField(
+        max_length=30,
+        blank=True)
     description = models.TextField(blank=False)
-    category = models.ForeignKey('Category',
-                                 on_delete=models.CASCADE)
+    category = models.ForeignKey(
+        'Category',
+        on_delete=models.CASCADE
+    )
 
     def __str__(self):
         return f"Course <{self.name}>"
@@ -80,9 +95,11 @@ class Course(models.Model):
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=30,
-                            blank=False,
-                            primary_key=True)
+    name = models.CharField(
+        max_length=30,
+        blank=False,
+        primary_key=True
+    )
 
     def __str__(self):
         return f"Category <{self.name}>"
