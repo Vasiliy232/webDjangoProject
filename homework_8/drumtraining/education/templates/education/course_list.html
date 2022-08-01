@@ -1,0 +1,108 @@
+{% extends 'education/base.html' %}
+{% load static %}
+
+{% block css %}
+  <style>
+    body {
+      font-family: "Open Sans", sans-serif;
+      background-color: lightgrey;
+    }
+
+    .course-item {
+      position: relative;
+      margin-bottom: 40px;
+      overflow: hidden;
+      display: block;
+      transition: all .3s ease-in-out
+    }
+
+    .course-item .course-info {
+      position: relative;
+      top: 0;
+      left: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      color: #fff;
+      background: radial-gradient(rgba(0,0,0,.68),rgba(0,0,0,.83));
+      padding: 20px;
+      align-items: start;
+      margin: 20px;
+      border: 2px solid rgb(0, 0, 0);
+      min-height: 300px;
+      transition: all .3s ease-in-out
+    }
+
+    .course-item:hover {
+      margin-bottom: 80px
+    }
+
+    .course-item:hover .course-info {
+      margin: 0;
+      border: 5px solid #031bbd;
+      padding: 2.3rem
+    }
+
+    .course-item figure {
+      margin-bottom: 0;
+      position: absolute;
+      min-height: 300px;
+      border: 5px solid #031bbd;
+      background: #1d1d1d;
+    }
+
+    .course-item figure img {
+      max-width: 100%
+    }
+
+    .course-item .course-info .title {
+      margin-top: auto;
+      padding-left: 42px;
+      padding-right: 20px;
+      margin-left: -42px;
+      background: #031bbe
+    }
+
+    .course-item .course-info p {
+      margin-bottom: 0;
+      margin-top: auto
+    }
+
+    .course-list{
+      background: rgba(210, 210, 234, 0.76);
+      color:#fff
+    }
+
+    nav {
+      background-color: #1d1d1d;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+
+  <section class="pt-5 pb-5 p-xxl">
+    <div class="container-fluid">
+
+      <div class="row mt-5">
+
+        {% for el in object_list %}
+
+          <div class="col-lg-3 col-md-6 col-12">
+            <a href="{% url 'education:course_detail' el.pk %}" class="course-item">
+              <figure>
+                <img src="{% static '/instruments.jpg' %}" alt="Музыкальные инструменты" />
+              </figure>
+              <div class="course-info">
+                <div class="title"><h3>{{ el.name }}</h3></div>
+              </div>
+            </a>
+          </div>
+
+        {% endfor %}
+
+      </div>
+
+    </div>
+  </section>
+{% endblock %}
