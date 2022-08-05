@@ -32,6 +32,36 @@
   </style>
 {% endblock %}
 
+{% block menu %}
+  <nav class="navbar navbar-expand-md">
+
+      <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+
+        <a href="/" class="mx-3">
+          <button class="btn btn-primary" type="submit"><i class="fa fa-home"></i></button>
+        </a>
+
+        <a href="/" class="me-3">
+          <button class="btn btn-primary" type="submit">Курсы</button>
+        </a>
+
+        <a href="{% url 'education:course_form' %}" class="me-3">
+          <button class="btn btn-primary" type="submit">Создать курс</button>
+        </a>
+
+        <a href="{% url 'education:course_update_form' object.pk %}" class="me-3">
+          <button class="btn btn-primary" type="submit">Редактировать курс</button>
+        </a>
+
+        <a href="{% url 'education:course_confirm_delete' object.pk %}">
+          <button class="btn btn-primary" type="submit">Удалить курс</button>
+        </a>
+
+      </div>
+
+    </nav>
+{% endblock %}
+
 {% block content %}
   <div class="bg11">
     <div class="container">

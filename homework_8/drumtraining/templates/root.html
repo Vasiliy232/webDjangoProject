@@ -34,8 +34,12 @@
             <button class="btn btn-primary" type="submit"><i class="fa fa-home"></i></button>
           </a>
 
-          <a href="/">
+          <a href="/" class="me-3">
             <button class="btn btn-primary" type="submit">Курсы</button>
+          </a>
+
+          <a href="{% url 'education:course_form' %}">
+            <button class="btn btn-primary" type="submit">Создать курс</button>
           </a>
 
         </div>
