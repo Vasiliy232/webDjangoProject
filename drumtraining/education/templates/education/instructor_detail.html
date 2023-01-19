@@ -1,0 +1,72 @@
+{% extends 'education/base.html' %}
+{% load static %}
+
+{% block css %}
+  <style>
+    body {
+      font-family: "Open Sans", sans-serif;
+      background-color: #ffffff;
+    }
+
+    .bg11 {
+      background: #3d33ce;
+      padding: 1rem 0;
+      color: #fff
+    }
+
+    .bg11 h1 {
+      margin-top: 1rem;
+      color: #fff
+    }
+
+    .bg-header {
+      border-left: 5px solid #333bce;
+      background: black;
+      padding: 5px 5px 10px 20px;
+      color: #fff;
+      width: 50rem
+    }
+
+    nav {
+      background-color: #1d1d1d;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <div class="bg11">
+    <div class="container">
+      <h1>{{ object.name }}</h1>
+    </div>
+  </div>
+
+  <div class="container mt-5 mb-5">
+    <div class="row">
+      <div class="col-md-7">
+        <p>
+          {{ object.bio }}
+        </p>
+      </div>
+
+        <h2 class="bg-header">Курсы</h2>
+
+        <div class="card my-3" style="width: 32.9rem;">
+          <div class="card-body">
+            {% for course in courses %}
+              <p>{{course.name}}</p>
+            {% endfor %}
+          </div>
+        </div>
+        <h2 class="bg-header">Студенты</h2>
+
+        <div class="card my-3" style="width: 32.9rem;">
+          <div class="card-body">
+            {% for student in students %}
+              <p>{{student.student}}</p>
+            {% endfor %}
+          </div>
+        </div>
+
+    </div>
+  </div>
+{% endblock %}

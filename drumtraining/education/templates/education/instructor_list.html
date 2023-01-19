@@ -1,0 +1,34 @@
+{% extends 'education/base.html' %}
+
+{% block css %}
+<style>
+    body {
+      font-family: "Open Sans", sans-serif;
+      background-color: lightgrey;
+    }
+
+    nav {
+      background-color: #1d1d1d;
+    }
+
+
+</style>
+{% endblock %}
+
+{% block content %}
+  <section class="pt-5 pb-5 p-xxl">
+    <font size="5">
+      <div class="container-fluid card">
+        <div class="card-body">
+        Наши инструкторы:
+        <ul>
+          {{courses}}
+          {% for instructor in instructors %}
+            <li><a href="{% url 'education:instructor_detail' instructor.1 %}">{{instructor.0}}</a></li>
+          {% endfor %}
+        </ul>
+        </div>
+      </div>
+    </font>
+  </section>
+{% endblock %}

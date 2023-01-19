@@ -1,0 +1,45 @@
+{% extends 'education/base.html' %}
+
+{% block css %}
+  <style>
+    body {
+      font-family: "Open Sans", sans-serif;
+      background-color: #e3e3e3;
+    }
+
+    nav {
+      background-color: #1d1d1d;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="container wrapper flex-grow-1">
+      <div class="card">
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label me-5">Название курса</label>
+            {{ form.name }}
+            <label class="form-label ms-5 me-2">Дата начала курса</label>
+            {{ form.started_at }}
+          </div>
+          <div class="mb-3">
+            <label class="form-label me-3">Длительность курса</label>
+            {{ form.duration }}
+            <label class="form-label ms-5 me-3">Стоимость курса</label>
+            {{ form.price }}
+          </div>
+          <div>
+            <p class="form-label">Описание курса</p>
+            {{ form.description }}
+          </div>
+        </div>
+        <div class="col d-flex justify-content-start mb-3 mx-3">
+          <input type="submit" value="Создать" class="btn btn-primary">
+        </div>
+      </div>
+    </div>
+  </form>
+{% endblock %}
