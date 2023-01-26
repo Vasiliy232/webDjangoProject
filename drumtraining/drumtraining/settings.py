@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'education',
-    'debug_toolbar'
+    'contact',
+    'debug_toolbar',
+    'django_rq'
 ]
 
 MIDDLEWARE = [
@@ -135,3 +137,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+RQ_QUEUES = {
+    'default': {
+        "HOST": "localhost",
+        'PORT': 6379,
+        'URL': os.getenv('REDISTOGO_URL', 'redis://localhost:6379'),
+        'DB': 0,
+        'DEFAULT_TIMEOUT': 360,
+    }
+}
+
+RECIPIENTS_EMAIL = ['admin@admin.com']
+DEFAULT_FROM_EMAIL = 'system@site.com'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

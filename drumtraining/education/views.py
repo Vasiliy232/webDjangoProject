@@ -1,11 +1,11 @@
-from django.contrib.auth import get_user_model
 from django.urls import reverse, reverse_lazy
 from django.views.generic import (
     ListView,
     DetailView,
     CreateView,
     UpdateView,
-    DeleteView
+    DeleteView,
+    TemplateView
 )
 from .models import Course, Instructor
 from .forms import CourseForm
@@ -78,3 +78,8 @@ class InstructorDetailView(PageTitleMixin, DetailView):
         context['courses'] = self.object.course.all()
         context['students'] = self.object.student.all().select_related('student')
         return context
+
+
+# class ContactsTemplateView(PageTitleMixin, TemplateView):
+#     page_title = 'Contacts'
+#     template_name = 'education/contacts.html'
